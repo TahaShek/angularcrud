@@ -1,0 +1,86 @@
+<div class="container my-5">
+
+    <div class="col-md-12">
+        <div class="wrapper">
+        <form (ngSubmit)="submitProductForm()" [formGroup]="formGroup" >
+          <div class="row mt-5">
+           
+        <div class="col">
+       
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control input" id="floatingInput" placeholder="Product Name" formControlName="productName">
+              <label for="floatingInput">Product Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control input" id="floatingInput" placeholder="companyName" formControlName="companyName">
+              <label for="floatingInput">companyName</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control input" id="floatingPassword" placeholder="Product Price" formControlName="price">
+              <label for="floatingPassword">Product-Price</label>
+            </div>
+            
+    
+      </div>
+      <div class="col">
+          <div class="form-floating mb-3">
+              <input type="number" class="form-control input" id="floatingInput" placeholder="Product Quantity" formControlName="quantity">
+              <label for="floatingInput">Product-Quantity</label>
+            </div>
+           
+    
+              <label for="" class="tag">Select Size</label>
+            <div  class="mb-3">
+              <ng-container *ngFor="let item of selectSize" >
+              <input #select  type="checkbox" class="form-check-input" [name]="item" [value]="item" [id]="item" (click)="getsize($event)"  />
+              <label class="form-check-label mx-2" >
+                {{item}}
+              </label>
+            </ng-container>
+            </div>
+              
+    
+      </div>
+    
+    </div>
+  
+    <div class="row">
+      <div class="col">
+    
+    <div class="mb-3">
+      <label for="formFile" class="form-label tag">Select Images</label>
+      <input #FileSelect class="form-control input" type="file" id="formFile" multiple (change)="getimage($event)"   >
+    </div>
+    
+      </div>
+      <div class="col">
+        <label for="" class="tag mb-2">Select Categories</label>
+        <select class="form-select input" formControlName="category">
+          <option *ngFor="let data of categories" [value]="data">{{data}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="" class="tag mb-2">Select color</label>
+        <select class="form-select input" formControlName="color">
+          <option *ngFor="let data of color" [value]="data">{{data}}</option>
+        </select>
+      </div>
+      <div class="form-floating mb-3">
+        <div class="mb-3">
+          <label for="" class="form-label">Description</label>
+          <textarea class="form-control" name="" id="" rows="3" formControlName="description"></textarea>
+        </div>
+        <!-- <label for="floatingInput">Description</label> -->
+      </div>
+      
+    </div>
+    <div class="row">
+      <button type="submit" class="btn button btn-outline-warning"  >Submit</button>
+    </div>
+    </form>
+        </div>
+      </div>
+    
+     
+   
+</div>
