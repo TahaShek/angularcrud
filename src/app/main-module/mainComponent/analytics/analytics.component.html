@@ -1,0 +1,60 @@
+<div class="container my-5 text-center">
+    <table class="table">
+        <thead>
+          <tr>
+            <th >#</th>
+            <th >Product Name</th>
+            <th >Image</th>
+            <th >Price</th>
+            <th >Status</th>
+            <th >Status summary</th>
+            <th >Company Name </th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of product ; let i=index">
+            <th >{{i+1}}</th>
+            <td>{{data.productName}}</td>
+            <td><img [src]="Url+data.ImageDetail[0].ImageUrl" class="" width="50px" alt=""></td>
+            <td>{{data.price | currency}}</td>
+            <td [ngClass]="data.status === 1 ? 'text-primary' : 'text-danger'">{{data.status}}</td>
+            <td [ngClass]="data.status===1? 'text-info':'text-danger'">{{data.status=== 1? 'in stock':'out of stock'}}</td>
+            <td>{{data.companyName}}</td>
+            <td><i class="bi bi-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="getdata(data._id)" ></i></td>
+            <td><button class="btn btn-outline-danger" (click)="deleteParticular(data._id)">Delete</button></td>
+            
+            
+          </tr>
+    
+        </tbody>
+      </table>
+</div>
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{particularProductData?.productName}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+                <div *ngFor="let data of particularProductData?.ImageDetail" class="col-lg-3">
+                      <img [src]="Url+data.ImageUrl" alt="">
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

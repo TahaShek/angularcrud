@@ -8,6 +8,7 @@ import { TestingComponent } from './mainComponent/testing/testing.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetComponent } from './mainComponent/get/get.component';
+import { AnalyticsComponent } from './mainComponent/analytics/analytics.component';
 
 
 
@@ -16,7 +17,8 @@ import { GetComponent } from './mainComponent/get/get.component';
     MainModuleComponent,
     HeaderComponent,
     TestingComponent,
-    GetComponent
+    GetComponent,
+    AnalyticsComponent
   ],
   imports: [
     CommonModule,

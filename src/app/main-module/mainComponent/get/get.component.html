@@ -1,8 +1,8 @@
-<div class="container my-5">
+<!-- <div class="container my-5">
     <div class="row">
         <div class="col" *ngFor="let data of product">
             <div class="card" style="width: 18rem;">
-                <img [src]="Url+data.ImageDetail[0].ImageUrl" class="card-img-top" [alt]="data.productName">
+                <img [src]="Url+data.ImageDetail[0].ImageUrl" [alt]="data.productName">
                 <div class="card-body">
                   <h5 class="card-title">{{data.productName}}</h5>
                   <p class="card-text">Description: {{data.category}}</p>
@@ -13,15 +13,15 @@
               </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<!-- 
+
 <div class="container">
     <div class="row">
         <div class="col-lg-4" *ngFor="let data of product">
            <div class="card-body">
             <div class="card-image">
-                <img [src]="url+data.ImageDetail[0].ImageUrl" [alt]="data.productName">
+                <img [src]="Url+data.ImageDetail[0].ImageUrl" class="img-fluid" [alt]="data.productName">
             </div>
             <div class="card-title">
                 <h4>Product Name:{{data.productName}}</h4>
@@ -42,4 +42,4 @@
            </div>
         </div>
     </div>
-</div> -->
+</div> 
