@@ -7,7 +7,7 @@ import { ProductService } from 'src/app/Shared/Service/product.service';
   styleUrls: ['./get.component.css']
 })
 export class GetComponent implements OnInit {
-Url='http://localhost:1111/'
+Url='http://localhost:2222/'
   constructor(private service:ProductService) { }
 product:any=[]
   ngOnInit(): void {

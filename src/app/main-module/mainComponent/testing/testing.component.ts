@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/Shared/Service/product.service';
@@ -17,15 +17,26 @@ export class TestingComponent implements OnInit {
   hello:boolean=false;
   formGroup:FormGroup|any
   @ViewChild ('FileSelect') FileSelect:ElementRef|any
-  @ViewChild ('select') select:ElementRef|any
+  // @ViewChild ('select') select:ElementRef|any
+
+  @ViewChildren("checkboxes") checkboxes:ElementRef|any
+
 
   constructor(private toastr: ToastrService,private formbuidler:FormBuilder,private productservice:ProductService) {
     this.formodel()
    }
   ngOnInit(): void {
-  
     
   }
+uncheckAll(){
+  this.checkboxes.forEach((element:any) => {
+    element.nativeElement.checked = false;
+    
+    
+  });
+
+}
+
   formodel(){
     this.formGroup=this.formbuidler.group({
       productName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
@@ -48,6 +59,7 @@ export class TestingComponent implements OnInit {
   }
   else{
     this.newsizeArray=this.newsizeArray.filter((element:any)=>element !=event.target.value
+
     )
   }
  }
@@ -99,6 +111,9 @@ this.productservice.createApi(MultiPartFormData).subscribe((response:any)=>{
   this.toastr.success(response.message)
   this.formGroup.reset()
   this.FileSelect.nativeElement.value =null
+  this.uncheckAll()
+
+  
   
 })
 

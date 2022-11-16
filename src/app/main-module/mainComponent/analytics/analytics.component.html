@@ -9,7 +9,7 @@
             <th >Status</th>
             <th >Status summary</th>
             <th >Company Name </th>
-            <th colspan="2">Actions</th>
+            <th colspan="4">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +22,9 @@
             <td [ngClass]="data.status===1? 'text-info':'text-danger'">{{data.status=== 1? 'in stock':'out of stock'}}</td>
             <td>{{data.companyName}}</td>
             <td><i class="bi bi-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="getdata(data._id)" ></i></td>
-            <td><button class="btn btn-outline-danger" (click)="deleteParticular(data._id)">Delete</button></td>
+            <td><i class="bi bi-pencil text-info" data-bs-toggle="modal" data-bs-target="#exampleModal1"  (click)="getdata(data._id)" ></i></td>
+            <td><i class="bi bi-trash text-danger" (click)="hardDelete(data._id)"></i></td>
+            <td><button class="btn btn-outline-danger" (click)="deleteParticular(data._id)">soft  Delete</button></td>
             
             
           </tr>
@@ -58,3 +60,49 @@
       </div>
     </div>
   </div>
+
+
+
+  <!-- modal to update  -->
+
+
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form  [formGroup]="updateForm" (ngSubmit)="updateSubmit()">
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">ProductName</label>
+                <input type="text" class="form-control" formControlName="productName">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Quantity</label>
+                <input type="number" class="form-control" formControlName="quantity">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Price</label>
+                <input type="number" class="form-control" formControlName="price">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Company Name</label>
+                <input type="text" class="form-control" formControlName="companyName">
+              </div>
+            
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+       
+      </div>
+    </div>
+  </div> 
