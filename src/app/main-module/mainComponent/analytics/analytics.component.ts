@@ -11,10 +11,12 @@ import { ProductService } from 'src/app/Shared/Service/product.service';
 export class AnalyticsComponent implements OnInit {
 product:any=[]
 particularProductData:any={}
-Url='http://localhost:2222/'
+Url='http://localhost:1111/'
 updateForm:FormGroup|any;
 // makeidPublic:any;
 myId:any
+toggleValue:boolean=false
+// viewToggle:boolean=false
 
   constructor(private service:ProductService,private toaster:ToastrService,private formbuilder:FormBuilder) {
     this.updateformModel()
@@ -89,4 +91,15 @@ this.service.UpdateById(payload).subscribe((res:any)=>{
   this.getdata(this.myId)
 })
 }
+
+
+toggle(){
+// this.toggleBolean=!this.toggleBolean
+this.toggleValue=!this.toggleValue
 }
+// changeView(){
+//   this.viewToggle = !this.viewToggle
+// }
+}
+
+

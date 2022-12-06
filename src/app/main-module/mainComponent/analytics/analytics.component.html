@@ -1,4 +1,13 @@
-<div class="container my-5 text-center">
+<div class="container">
+  <div class="row">
+  <button class="btn btn-outline-success " [ngClass]="toggleValue? 'btn-outline-info':'' "(click)="toggle()" >{{toggleValue? "toggle list view ":"Toglle grid view "}}</button>
+  <!-- <button type="button" class="btn btn-outline-success" [ngClass]=" viewToggle ? 'btn-outline-info': ' ' " (click)="changeView()" >asad</button> -->
+
+
+  </div>
+</div>
+<div class="container my-5 text-center" *ngIf="!toggleValue">
+  <!-- <button class="btn btn-outline-success" [ngClass]="toggleBolean? 'btn-outline-success':'' " (click)="toggle()">{{toggleBolean? 'Toogle list view': 'Toggle grid view'}}</button> -->
     <table class="table">
         <thead>
           <tr>
@@ -33,7 +42,23 @@
       </table>
 </div>
 
-<!-- Button trigger modal -->
+
+<div class="container" *ngIf="toggleValue">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let data of product">
+   <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <h1>{{data.productName}}</h1>
+      </div>
+    </div>
+   </div>
+    </div>
+  </div>
+</div>
+
+
+
 
   
   <!-- Modal -->
@@ -48,7 +73,7 @@
           <div class="container">
             <div class="row">
                 <div *ngFor="let data of particularProductData?.ImageDetail" class="col-lg-3">
-                      <img [src]="Url+data.ImageUrl" alt="">
+                      <img class="img-fluid" [src]="Url+data.ImageUrl" alt="">
                 </div>
             </div>
           </div>

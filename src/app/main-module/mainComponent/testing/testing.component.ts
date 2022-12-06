@@ -28,14 +28,7 @@ export class TestingComponent implements OnInit {
   ngOnInit(): void {
     
   }
-uncheckAll(){
-  this.checkboxes.forEach((element:any) => {
-    element.nativeElement.checked = false;
-    
-    
-  });
 
-}
 
   formodel(){
     this.formGroup=this.formbuidler.group({
@@ -76,7 +69,13 @@ this.FileSelect.nativeElement.value=null
 this.toastr.error(`Image selection limit is 5 but you have selected ${filesLenght}`)
 }
  }
+ uncheckAll(){
+  this.checkboxes?.forEach((element:any) => {
+    element.nativeElement.checked = false;
+       
+  });
 
+}
 
   submitProductForm(){
     // this.newsizeArray.forEach((elements: string) => {
@@ -109,6 +108,7 @@ this.newimageArray.forEach((ImagesData:any) => {
 
 this.productservice.createApi(MultiPartFormData).subscribe((response:any)=>{
   this.toastr.success(response.message)
+  this.newsizeArray=[]
   this.formGroup.reset()
   this.FileSelect.nativeElement.value =null
   this.uncheckAll()
